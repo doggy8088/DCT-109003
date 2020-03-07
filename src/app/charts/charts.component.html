@@ -1,13 +1,20 @@
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Charts {{type}}
+  <h1 class="h3 mb-2 text-gray-800">{{title}} {{type}}
+
+    <button [routerLink]="['/charts', type+1]"
+            [queryParams]="
+                {
+                  type: type+1
+                }
+            ">Path: +1</button>
 
     <button [routerLink]="['/charts']"
             [queryParams]="
                 {
                   type: type+1
                 }
-            ">+1</button>
+            ">Query: +1</button>
 
     <button (click)="plusOne()">+1</button>
 

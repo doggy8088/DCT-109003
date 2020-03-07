@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ChartsComponent implements OnInit {
 
+  title = '';
   type = 0;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
@@ -22,8 +23,17 @@ export class ChartsComponent implements OnInit {
 
     // this.type = +this.route.snapshot.paramMap.get('type');
 
+    this.route.paramMap.subscribe(p => {
+      this.type = +p.get('type');
+    });
+
     this.route.queryParamMap.subscribe(p => {
       this.type = +p.get('type');
+    });
+
+    this.route.data.subscribe(d => {
+      // tslint:disable-next-line: no-string-literal
+      this.title = d['title'];
     });
   }
 
