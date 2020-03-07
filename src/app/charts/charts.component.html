@@ -2,7 +2,7 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800">Charts {{type}}
 
-    <button (click)="plusOne()">+1</button>
+    <button [routerLink]="['/charts', type+1]">+1</button>
 
   </h1>
   <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme. The charts below

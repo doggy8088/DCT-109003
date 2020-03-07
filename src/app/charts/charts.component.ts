@@ -27,11 +27,6 @@ export class ChartsComponent implements OnInit {
     });
   }
 
-  plusOne() {
-    this.type = this.type + 1;
-    this.router.navigateByUrl('/charts/' + this.type);
-  }
-
 }
 
 
