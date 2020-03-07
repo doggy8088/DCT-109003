@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { chartAreaDemo } from '../chartAreaDemo';
 import { chartPieDemo } from '../chartPieDemo';
 import { chartBarDemo } from '../chartBarDemo';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-charts',
@@ -10,12 +11,25 @@ import { chartBarDemo } from '../chartBarDemo';
 })
 export class ChartsComponent implements OnInit {
 
-  constructor() { }
+  type = 0;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     chartAreaDemo();
     chartPieDemo();
     chartBarDemo();
+
+    // this.type = +this.route.snapshot.paramMap.get('type');
+
+    this.route.paramMap.subscribe(p => {
+      this.type = +p.get('type');
+    });
+  }
+
+  plusOne() {
+    this.type = this.type + 1;
+    this.router.navigateByUrl('/charts/' + this.type);
   }
 
 }
