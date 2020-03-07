@@ -14,12 +14,8 @@ const routes: Routes = [
   { path: 'tables', component: TablesComponent },
   { path: 'charts', component: ChartsComponent, data: { title: '圖表' } },
   { path: 'charts/:type', component: ChartsComponent, data: { title: '圖表' } },
-  {
-    path: 'utilities',
-    children: [
-      { path: 'colors', component: ColorsComponent }
-    ]
-  },
+  { path: 'utilities',
+    loadChildren: () => import('./utilities/utilities.module').then(m => m.UtilitiesModule) },
   { path: '**', component: NotFoundComponent }
 ];
 

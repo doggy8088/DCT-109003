@@ -9,7 +9,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
-import { ColorsComponent } from './utilities/colors/colors.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { ColorsComponent } from './utilities/colors/colors.component';
     DashboardComponent,
     NotFoundComponent,
     TablesComponent,
-    ChartsComponent,
-    ColorsComponent
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
