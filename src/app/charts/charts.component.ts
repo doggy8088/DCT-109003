@@ -22,8 +22,16 @@ export class ChartsComponent implements OnInit {
 
     // this.type = +this.route.snapshot.paramMap.get('type');
 
-    this.route.paramMap.subscribe(p => {
+    this.route.queryParamMap.subscribe(p => {
       this.type = +p.get('type');
+    });
+  }
+
+  plusOne() {
+    this.router.navigate(['/charts'], {
+      queryParams: {
+        type: this.type + 1
+      }
     });
   }
 
