@@ -14,12 +14,25 @@
                 </div>
                 <pre>{{ data | json }}</pre>
                 <form class="user">
-                  <div class="form-group">
+                  <div class="form-group" [class.has-error]="tEmail.invalid">
                     <input type="email"
                       name="email"
+                      #tEmail="ngModel"
+                      required email
                       [(ngModel)]="data.email"
                     class="form-control form-control-user" id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+<div *ngIf="tEmail.errors.email">請輸入合法的 E-mail 地址</div>
+<div *ngIf="tEmail.errors.required">請輸入 E-mail 地址</div>
+<pre>tEmail.value = {{tEmail.value}}
+tEmail.pristine  = {{tEmail.pristine}}
+tEmail.dirty     = {{tEmail.dirty}}
+tEmail.touched   = {{tEmail.touched}}
+tEmail.untouched = {{tEmail.untouched}}
+tEmail.valid     = {{tEmail.valid}}
+tEmail.invalid   = {{tEmail.invalid}}
+tEmail.errors    = {{tEmail.errors | json}}
+</pre>
                   </div>
                   <div class="form-group">
                     <input type="password"
