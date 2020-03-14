@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators, FormGroupDirective, AbstractControl, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormGroupDirective, AbstractControl, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 function 身分證字號Validator(control: AbstractControl): ValidationErrors {
@@ -51,7 +51,12 @@ export class Login2Component implements OnInit, OnDestroy {
 
     this.form = this.fb.group({
       email:
-        this.fb.control('doggy.huang@gmail.com', [Validators.required], [身分證字號ValidatorAsync]),
+        this.fb.control(
+          'doggy.huang@gmail.com', {
+            validators: [Validators.required],
+            asyncValidators: [身分證字號ValidatorAsync],
+            updateOn: 'blur'
+          }),
       // ['doggy.huang@gmail.com', [Validators.required, 身分證字號Validator]],
       password: ['123123123', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       isRemember: [true],
