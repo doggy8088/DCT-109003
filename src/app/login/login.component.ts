@@ -9,6 +9,10 @@ import { NgForm, NgModel } from '@angular/forms';
 export class LoginComponent implements OnInit, OnDestroy {
 
   data: any = {
+    email: 'doggy.huang@gmail.com',
+    password: '123123123',
+    phone: '0988888888',
+    isRemember: true
   };
 
   origBodyClass = '';
