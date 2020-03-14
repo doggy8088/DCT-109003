@@ -24,8 +24,8 @@
                     [class.is-invalid]="tEmail.invalid"
                     id="exampleInputEmail"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
-<div *ngIf="tEmail.errors?.email">請輸入合法的 E-mail 地址</div>
-<div *ngIf="tEmail.errors?.required">請輸入 E-mail 地址</div>
+<div class="invalid-feedback" *ngIf="tEmail.errors?.email">請輸入合法的 E-mail 地址</div>
+<div class="invalid-feedback" *ngIf="tEmail.errors?.required">請輸入 E-mail 地址</div>
 <pre>tEmail.value = {{tEmail.value}}
 tEmail.pristine  = {{tEmail.pristine}}
 tEmail.dirty     = {{tEmail.dirty}}
