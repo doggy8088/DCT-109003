@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login2',
@@ -24,8 +24,8 @@ export class Login2Component implements OnInit, OnDestroy {
     // });
 
     this.form = this.fb.group({
-      email: ['doggy.huang@gmail.com'],
-      password: ['123123123'],
+      email: ['doggy.huang@gmail.com', [Validators.required, Validators.email]],
+      password: ['123123123', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       isRemember: [true],
     });
 
@@ -38,6 +38,12 @@ export class Login2Component implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     document.body.className = this.origBodyClass;
+  }
+
+  doSubmit(form: NgForm) {
+    if (form.valid) {
+      // TODO: HTTP POST
+    }
   }
 
 }

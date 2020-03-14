@@ -12,16 +12,48 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user" [formGroup]="form">
+
+<pre>form.value = {{form.value | json}}
+form.pristine  = {{form.pristine}}
+form.dirty     = {{form.dirty}}
+form.touched   = {{form.touched}}
+form.untouched = {{form.untouched}}
+form.valid     = {{form.valid}}
+form.invalid   = {{form.invalid}}
+form.errors    = {{form.errors | json}}
+form.status    = {{form.status}}
+form.enabled   = {{form.enabled}}
+form.disabled  = {{form.disabled}}
+tForm.submitted= {{tForm.submitted}}
+</pre>
+                <form class="user" [formGroup]="form"
+                  #tForm="ngForm" (ngSubmit)="doSubmit(tForm)">
                   <div class="form-group">
                     <input type="email"
                       formControlName="email"
                     class="form-control form-control-user"
+                    [class.is-invalid]="tForm.submitted && form.get('email').invalid"
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+
+<div class="invalid-feedback" *ngIf="tForm.submitted && form.get('email').errors?.email">請輸入合法的 E-mail 地址</div>
+<div class="invalid-feedback" *ngIf="tForm.submitted && form.get('email').errors?.required">請輸入 E-mail 地址</div>
+<pre>form.get('email').value = {{form.get('email').value}}
+form.get('email').pristine  = {{form.get('email').pristine}}
+form.get('email').dirty     = {{form.get('email').dirty}}
+form.get('email').touched   = {{form.get('email').touched}}
+form.get('email').untouched = {{form.get('email').untouched}}
+form.get('email').valid     = {{form.get('email').valid}}
+form.get('email').invalid   = {{form.get('email').invalid}}
+form.get('email').errors    = {{form.get('email').errors | json}}
+form.get('email').status    = {{form.get('email').status}}
+form.get('email').enabled    = {{form.get('email').enabled}}
+form.get('email').disabled    = {{form.get('email').disabled}}
+</pre>
                   </div>
                   <div class="form-group">
                     <input type="password"
                       formControlName="password"
+                      [class.is-invalid]="tForm.submitted && form.get('password').invalid"
                     class="form-control form-control-user"
                            placeholder="Password">
                   </div>
@@ -32,7 +64,7 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <a href="index.html" class="btn btn-primary btn-user btn-block"> Login </a>
+                  <button class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>
