@@ -50,15 +50,18 @@ export class Login2Component implements OnInit, OnDestroy {
     // });
 
     this.form = this.fb.group({
-      email:
-        this.fb.control(
-          'doggy.huang@gmail.com', {
-            validators: [Validators.required],
-            asyncValidators: [身分證字號ValidatorAsync],
-            updateOn: 'blur'
-          }),
-      // ['doggy.huang@gmail.com', [Validators.required, 身分證字號Validator]],
-      password: ['123123123', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+      email: [ 'doggy.huang@gmail.com', {
+        validators: [Validators.required],
+        asyncValidators: [身分證字號ValidatorAsync],
+        updateOn: 'blur'
+      }],
+      password: ['123123123',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(15)
+        ]
+      ],
       isRemember: [true],
     });
 
