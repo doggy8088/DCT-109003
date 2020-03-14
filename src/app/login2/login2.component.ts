@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-login2',
@@ -40,7 +40,7 @@ export class Login2Component implements OnInit, OnDestroy {
     document.body.className = this.origBodyClass;
   }
 
-  doSubmit(form: NgForm) {
+  doSubmit(form: FormGroupDirective) {
     if (form.valid) {
       // TODO: HTTP POST
     }
