@@ -13,7 +13,20 @@
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
                 <pre>{{ data | json }}</pre>
-                <form class="user">
+<pre>form.value = {{form.value | json}}
+form.pristine  = {{form.pristine}}
+form.dirty     = {{form.dirty}}
+form.touched   = {{form.touched}}
+form.untouched = {{form.untouched}}
+form.valid     = {{form.valid}}
+form.invalid   = {{form.invalid}}
+form.errors    = {{form.errors | json}}
+form.status    = {{form.status}}
+form.enabled   = {{form.enabled}}
+form.disabled  = {{form.disabled}}
+form.submitted  = {{form.submitted}}
+</pre>
+                <form class="user" #form="ngForm" (ngSubmit)="doSubmit(form)">
                   <div class="form-group">
                     <input type="email"
                       name="email"
@@ -21,12 +34,11 @@
                       required email
                       [(ngModel)]="data.email"
                     class="form-control form-control-user"
-                    [class.is-invalid]="tEmail.invalid"
+                    [class.is-invalid]="form.submitted && tEmail.invalid"
                     id="exampleInputEmail"
-                    disabled
                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
-<div class="invalid-feedback" *ngIf="tEmail.errors?.email">請輸入合法的 E-mail 地址</div>
-<div class="invalid-feedback" *ngIf="tEmail.errors?.required">請輸入 E-mail 地址</div>
+<div class="invalid-feedback" *ngIf="form.submitted && tEmail.errors?.email">請輸入合法的 E-mail 地址</div>
+<div class="invalid-feedback" *ngIf="form.submitted && tEmail.errors?.required">請輸入 E-mail 地址</div>
 <pre>tEmail.value = {{tEmail.value}}
 tEmail.pristine  = {{tEmail.pristine}}
 tEmail.dirty     = {{tEmail.dirty}}
@@ -44,6 +56,9 @@ tEmail.disabled    = {{tEmail.disabled}}
                     <input type="password"
                       name="password"
                       [(ngModel)]="data.password"
+                      #tPassword="ngModel"
+                      required minlength="6"
+                      [class.is-invalid]="isFieldValid(tPassword)"
                     class="form-control form-control-user" id="exampleInputPassword"
                            placeholder="Password">
                   </div>
@@ -56,7 +71,7 @@ tEmail.disabled    = {{tEmail.disabled}}
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <a href="index.html" class="btn btn-primary btn-user btn-block"> Login </a>
+                  <button class="btn btn-primary btn-user btn-block"> Login </button>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user btn-block">
                     <i class="fab fa-google fa-fw"></i> Login with Google </a>
