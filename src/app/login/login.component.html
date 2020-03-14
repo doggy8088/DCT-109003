@@ -65,10 +65,10 @@ tEmail.disabled    = {{tEmail.disabled}}
 
                   <div ngModelGroup="phoneGroup" #tPhoneGroup="ngModelGroup">
 
-                    <div class="form-group">
+                    <div *ngFor="let item of phone_fields; let i=index" class="form-group">
                       <input type="text"
                         name="phone"
-                        [(ngModel)]="data.phone"
+                        [(ngModel)]="data.phones[i]"
                         #tPhone="ngModel"
                         required minlength="10" maxlength="10"
                         [class.is-invalid]="isFieldValid(tPhone)"

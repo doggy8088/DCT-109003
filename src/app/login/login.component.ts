@@ -11,9 +11,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   data: any = {
     email: 'doggy.huang@gmail.com',
     password: '123123123',
-    phone: '0988888888',
+    phones: [],
     isRemember: true
   };
+
+  // 動態欄位用
+  phone_fields = new Array(3);
 
   origBodyClass = '';
 
